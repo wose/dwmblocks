@@ -1,0 +1,10 @@
+#!/bin/sh
+
+weather=$(curl -s wttr.in/Chemnitz?format=1)
+ping -c 1 github.com > /dev/null 2>&1
+if [ $? -eq 0 ]; then
+    if [ ${#weather} -lt 10 ]; then
+        printf "$weather"
+    fi
+fi
+

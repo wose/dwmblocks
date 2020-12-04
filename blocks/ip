@@ -1,0 +1,1 @@
+ip addr | grep 'state UP' -A3 | awk '/inet/ {print $2; exit}' | cut -f1 -d'/'
