@@ -3,7 +3,8 @@
 #define WIDGET_PATH "~/.dwm/bin/"
 static const Block blocks[] = {
     /*Icon*/ /*Command*/                                            /*Update Interval*/ /*Update Signal*/
-	{"", "free -h | awk '/^Mem/ { print $3\"/\"$2 }' | sed s/i//g",	30,		            0},
+	{"", WIDGET_PATH "volume",                                      30,                 0},
+	{"", "free -h | awk '/^Mem/ { print $3\"/\"$2 }' | sed s/i//g",	30,                 0},
 	{"", WIDGET_PATH "cpu",                                         5,                  0},
 	{"", WIDGET_PATH "ip",                                          60,                 0},
 	{"", WIDGET_PATH "weather",                                     300,                0},

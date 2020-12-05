@@ -1,0 +1,10 @@
+#!/bin/sh
+
+mute="$(amixer -c 2 get Master | tail -n1 | sed -r 's/.*\[(.*)\].*/\1/')"
+vol="$(amixer -c 2 get Master | tail -n1 | sed -r 's/.*\[(.*)%\].*/\1/')"
+gap="  "
+volchrs=${#vol}
+[ "$mute" = "off" ] && echo "🔇 $(echo "$gap" | awk '{ gap=substr($0, '$volchrs'); print gap; }') ${vol}% " && exit ||
+[ "$vol" -le 30 ] && echo "🔈 $(echo "$gap" | awk '{ gap=substr($0, '$volchrs'); print gap; }') ${vol}% " && exit ||
+[ "$vol" -le 60 ] && echo "🔉 $(echo "$gap" | awk '{ gap=substr($0, '$volchrs'); print gap; }') ${vol}% " && exit ||
+[ "$vol" -gt 60 ] && echo "🔊 $(echo "$gap" | awk '{ gap=substr($0, '$volchrs'); print gap; }') ${vol}% "
